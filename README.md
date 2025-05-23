@@ -23,62 +23,74 @@ results on the test set.
 Evaluate the model's performance using accuracy score from
 sklearn.metrics .
 
-
 ## Program:
 ```
 /*
 Program to implement the SVM For Spam Mail Detection..
-Developed by: Ramitha chowdary S
-RegisterNumber:  24900704
-
-import chardet
-import pandas as pd
-file = 'spam.csv'
-with open(file, 'rb') as rawdata:
-    result = chardet.detect(rawdata.read(100000))
-data = pd.read_csv(file, encoding=result['encoding'])
-data.head()
-data.info()
-data.isnull().sum()
-x = data["v2"].values # Features (text)
-y = data["v1"].values # Labels ("ham"/"spam")
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-y = le.fit_transform(y) # Encode labels (ham=0, spam=1)
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
-from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer()
-x_train = cv.fit_transform(x_train)
-x_test = cv.transform(x_test)
-from sklearn.svm import SVC
-svc = SVC()
-svc.fit(x_train, y_train)
-y_pred = svc.predict(x_test)
-from sklearn import metrics
-accuracy = metrics.accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy}")
-
+Developed by: ASWIN ANTONY.S
+RegisterNumber:  212224220014
 */
+
+
+import pandas as pd
+data=pd.read_csv("spam.csv",encoding='latin-1')
+
+data.head()
+
+data.info()
+
+data.isnull().sum()
+
+x=data["v1"].values
+y=data["v2"].values
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+
+from sklearn.feature_extraction.text import CountVectorizer
+cv=CountVectorizer()
+
+x_train=cv.fit_transform(x_train)
+x_test=cv.transform(x_test)
+
+from sklearn.svm import SVC
+svc=SVC()
+svc.fit(x_train,y_train)
+
+y_pred=svc.predict(x_test)
+y_pred
+
+from sklearn import metrics
+accuracy=metrics.accuracy_score(y_test,y_pred)
+accuracy
 ```
 
 ## Output:
-![SVM For Spam Mail Detection](sam.png)
-```
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 5572 entries, 0 to 5571
-Data columns (total 5 columns):
-# Column Non-Null Count Dtype
---- ------ -------------- -----
-0 v1 5572 non-null object
-1 v2 5572 non-null object
-2 Unnamed: 2 50 non-null object
-3 Unnamed: 3 12 non-null object
-4 Unnamed: 4 6 non-null object
-dtypes: object(5)
-memory usage: 217.8+ KB
-Accuracy: 0.9766816143497757
-```
+
+### data.head()
+![Screenshot 2023-11-02 000307](https://github.com/Roselinjovita/Implementation-of-SVM-For-Spam-Mail-Detection/assets/119104296/f25a1488-2cf4-401c-b9a1-c718528f7009)
+
+
+### data.info()
+
+![Screenshot 2023-11-02 000315](https://github.com/Roselinjovita/Implementation-of-SVM-For-Spam-Mail-Detection/assets/119104296/701258ca-4918-4d2f-b242-e292c007eb6b)
+
+
+### data.isnull().sum()
+
+
+![Screenshot 2023-11-02 000327](https://github.com/Roselinjovita/Implementation-of-SVM-For-Spam-Mail-Detection/assets/119104296/f630a7bd-8b5b-4a6b-9339-efc41656d1a6)
+
+### y_prediction value
+
+![Screenshot 2023-11-02 000336](https://github.com/Roselinjovita/Implementation-of-SVM-For-Spam-Mail-Detection/assets/119104296/9f5f562a-6191-47cd-a533-57677ea21f50)
+
+### Accuracy value
+![Screenshot 2023-11-02 000342](https://github.com/Roselinjovita/Implementation-of-SVM-For-Spam-Mail-Detection/assets/119104296/22fc6d5f-3a59-4a8f-bf6e-5cc76de836a0)
+
+
 
 ## Result:
 Thus the program to implement the SVM For Spam Mail Detection is written and verified using python programming.
+
+
